@@ -2,6 +2,7 @@
            (replacing the placeholder with your Github name):
            https://api.github.com/users/alecdye
 */
+// --- .get request for github data from author's account ---
 axios.get("https://api.github.com/users/alecdye")
   .then(response => {
     console.log(response)
@@ -9,14 +10,12 @@ axios.get("https://api.github.com/users/alecdye")
   .catch(error => {
     console.log("No data coming through", error)
   })
-
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
    data in order to use it to build your component function 
 
    Skip to Step 3.
 */
-
 /* Step 4: Pass the data received from Github into your function, 
            create a new component and add it to the DOM as a child of .cards
 */

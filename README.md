@@ -39,6 +39,8 @@ In this project we are going to be accessing the GitHub API and building a socia
 * Include the script element linking the `axios` library in your HTML. If you do not remember the code you can find it here: https://github.com/axios/axios
 * Follow the instructions found in the GitHubCard/index.js file to request data from the GitHub API.
 
+--- Done! ---
+
 ### Part 2: Create the component function
 
 * Once you are receiving data from the GitHub API, take some time to study the data and the information it is giving you. You will create the HTML template you see in the GitHubCard/index.js file and plugging in the dynamic data you are getting from the GitHub API.
