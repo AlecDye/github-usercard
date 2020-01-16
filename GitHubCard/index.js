@@ -51,7 +51,8 @@ const followersArray = [
   "dustinmyers",
   "justsml",
   "luishrd",
-  "bigknell"
+  "bigknell",
+  "alecdye"
 ];
 
 /* Step 3: Create a function that accepts a single object as its only argument,
@@ -100,10 +101,10 @@ function createCard(user) {
   cardCont.append(bio);
 
   // --- assigning classes
-  newCard.classList.add('.card');
-  cardCont.classList.add('.card-info');
-  name.classList.add('.name');
-  userName.classList.add('.username');
+  newCard.classList.add('card');
+  cardCont.classList.add('card-info');
+  name.classList.add('name');
+  userName.classList.add('username');
 
   // note: adding classes to html element for existing css style, not assigning css styles to html elements.
   // newImg.classList.add('.card img');
@@ -122,9 +123,11 @@ function createCard(user) {
   location.textContent = user.data.location;
   linkCont.textContent = "Profile: ";
   link.textContent = user.data.html_url;
-  countFollowers.textContent = `${user.data.followers} Followers`;
-  countFollowing.textContent = `${user.data.following} Following`;
-  bio.textContent = user.data.bio;
+  // link.src = user.data.html_url;
+  linkCont.textContent = user.data.html_url;
+  countFollowers.textContent = `Followers: ${user.data.followers}`;
+  countFollowing.textContent = `Following: ${user.data.following}`;
+  bio.textContent = `Bio: ${user.data.bio}`;
 
   // --- return function
   return newCard;
