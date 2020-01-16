@@ -46,18 +46,21 @@
           user, and adding that card to the DOM.
 */
 
+
+// Stretch goal: instead of using the below array, create a function to loop through the api data and feed it into the cardCreate.
 const followersArray = [
   "alecdye",
-  "edvinsaletovic",
-  "kevinphillips",
-  "danielballuff",
-  "amosrose",
+  "vodenizeko",
+  "kphillips001",
+  "kaverndsp",
+  "AmMiRo",
   "austinhuisinga",
-  "tylerdefriess",
+  "tdefriess",
   "krystalguzman",
   "taylorroebuck",
-  "alexmiller",
-  "sethcox"
+  "alexvision26",
+  "abqkatrina",
+  "svyatoskshin"
 ];
 
 /* Step 3: Create a function that accepts a single object as its only argument,
@@ -87,7 +90,7 @@ function createCard(user) {
     name = document.createElement('h3'),
     userName = document.createElement('p'),
     userLocation = document.createElement('p'),
-    linkCont = document.createElement('p'),
+    profile = document.createElement('p'),
     link = document.createElement('a'),
     countFollowers = document.createElement('p'),
     countFollowing = document.createElement('p'),
@@ -99,8 +102,8 @@ function createCard(user) {
   cardCont.append(name);
   cardCont.append(userName);
   cardCont.append(userLocation);
-  cardCont.append(linkCont);
-  linkCont.append(link);
+  cardCont.append(profile);
+  // profile.append(link);
   cardCont.append(countFollowers);
   cardCont.append(countFollowing);
   cardCont.append(bio);
@@ -111,28 +114,26 @@ function createCard(user) {
   name.classList.add('name');
   userName.classList.add('username');
 
-  // note: adding classes to html element for existing css style, not assigning css styles to html elements.
-  // newImg.classList.add('.card img');
-  // name.classList.add('.card .name');
-  // userName.classList.add('.card .username');
-  // location.classList.add('.card p');
-  // linkCont.classList.add('.card p');
-  // countFollowers.classList.add('.card p');
-  // countFollowing.classList.add('.card p');
-  // bio.classList.add('.card p');
+  // note: adding classes to html element for existing css style, not creating new css styles for html elements.
 
   // --- assigning textContent to elements
   newImg.src = user.data.avatar_url;
   name.textContent = user.data.name;
   userName.textContent = user.data.login;
-  userLocation.textContent = user.data.location;
-  linkCont.textContent = "Profile: ";
+  userLocation.textContent = `Location: ${user.data.location}`;
+  profile.textContent = "Profile: ";
   link.textContent = user.data.html_url;
-  // link.src = user.data.html_url;
-  linkCont.textContent = user.data.html_url;
+  link.setAttribute("href", user.data.html_url);
+  // link.textContent.setAttribute = ("href", user.data.html_url);
+  // link.innerHTML = "Profile";
+  // link.setAttribute("href", data.html_url);
+  // link.href = user.data.html_url;
   countFollowers.textContent = `Followers: ${user.data.followers}`;
   countFollowing.textContent = `Following: ${user.data.following}`;
   bio.textContent = `Bio: ${user.data.bio}`;
+
+  // note need to move this below the href assignment because: reasons?
+  profile.append(link);
 
   // --- return function
   return newCard;
