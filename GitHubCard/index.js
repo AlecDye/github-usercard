@@ -4,12 +4,26 @@
 */
 // --- .get request for github data from author's account ---
 axios.get("https://api.github.com/users/alecdye")
+  // --- Everything is working :)
   .then(response => {
     console.log(response)
   })
-  .catch(error => {
-    console.log("No data coming through", error)
-  })
+  // --- Something broke :(
+  .catch(function (error) {
+    if (error.response) {
+      // request reached server and server replied with status code
+      console.log(error.response.data);
+      console.log(error.response.status);
+      console.log(error.response.headers);
+    } else if (error.request) {
+      // request made but no reply came back
+      console.log(error.request);
+    } else {
+      // something happened while setting up the request
+      console.log("Error", error.message);
+    }
+    console.log(error.config);
+  });
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
    data in order to use it to build your component function 
@@ -20,8 +34,13 @@ axios.get("https://api.github.com/users/alecdye")
            create a new component and add it to the DOM as a child of .cards
 */
 
+// function userCard() {
+//   const newCard = document.createElement('div'),
+//         newImage = document.createElement('img'),
+// }
+
 /* Step 5: Now that you have your own card getting added to the DOM, either 
-          follow this link in your browser https://api.github.com/users/<Your github name>/followers 
+          follow this link in your browser https://api.github.com/users/alecdye/followers 
           , manually find some other users' github handles, or use the list found 
           at the bottom of the page. Get at least 5 different Github usernames and add them as
           Individual strings to the friendsArray below.
