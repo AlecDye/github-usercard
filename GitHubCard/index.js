@@ -90,6 +90,35 @@ function createCard(user) {
   cardCont.append(countFollowers);
   cardCont.append(countFollowing);
   cardCont.append(bio);
+
+  // --- assigning classes
+  newCard.classList.add('.card');
+  cardCont.classList.add('.card-info');
+  name.classList.add('.name');
+  userName.classList.add('.username');
+
+  // newImg.classList.add('.card img');
+  // name.classList.add('.card .name');
+  // userName.classList.add('.card .username');
+  // location.classList.add('.card p');
+  // linkCont.classList.add('.card p');
+  // countFollowers.classList.add('.card p');
+  // countFollowing.classList.add('.card p');
+  // bio.classList.add('.card p');
+
+  // --- assigning textContent to elements
+  newImg.src = user.data.avatar_url;
+  name.textContent = user.data.name;
+  userName.textContent = user.data.login;
+  location.textContent = user.data.location;
+  linkCont.textContent = "Profile: ";
+  link.textContent = user.data.html_url;
+  countFollowers.textContent = `${user.data.followers} Followers`;
+  countFollowing.textContent = `${user.data.following} Following`;
+  bio.textContent = user.data.bio;
+
+  // --- return function
+  return newCard;
 }
 
 /* List of LS Instructors Github username's:
