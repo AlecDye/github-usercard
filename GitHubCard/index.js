@@ -47,12 +47,17 @@
 */
 
 const followersArray = [
-  "tetondan",
-  "dustinmyers",
-  "justsml",
-  "luishrd",
-  "bigknell",
-  "alecdye"
+  "alecdye",
+  "edvinsaletovic",
+  "kevinphillips",
+  "danielballuff",
+  "amosrose",
+  "austinhuisinga",
+  "tylerdefriess",
+  "krystalguzman",
+  "taylorroebuck",
+  "alexmiller",
+  "sethcox"
 ];
 
 /* Step 3: Create a function that accepts a single object as its only argument,
@@ -81,7 +86,7 @@ function createCard(user) {
     newImg = document.createElement('img'),
     name = document.createElement('h3'),
     userName = document.createElement('p'),
-    location = document.createElement('p'),
+    userLocation = document.createElement('p'),
     linkCont = document.createElement('p'),
     link = document.createElement('a'),
     countFollowers = document.createElement('p'),
@@ -93,7 +98,7 @@ function createCard(user) {
   newCard.append(cardCont);
   cardCont.append(name);
   cardCont.append(userName);
-  cardCont.append(location);
+  cardCont.append(userLocation);
   cardCont.append(linkCont);
   linkCont.append(link);
   cardCont.append(countFollowers);
@@ -120,7 +125,7 @@ function createCard(user) {
   newImg.src = user.data.avatar_url;
   name.textContent = user.data.name;
   userName.textContent = user.data.login;
-  location.textContent = user.data.location;
+  userLocation.textContent = user.data.location;
   linkCont.textContent = "Profile: ";
   link.textContent = user.data.html_url;
   // link.src = user.data.html_url;
