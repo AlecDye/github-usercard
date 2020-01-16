@@ -2,28 +2,30 @@
            (replacing the placeholder with your Github name):
            https://api.github.com/users/alecdye
 */
+
 // --- .get request for github data from author's account ---
-axios.get("https://api.github.com/users/alecdye")
-  // --- Everything is working :)
-  .then(response => {
-    console.log(response)
-  })
-  // --- Something broke :(
-  .catch(function (error) {
-    if (error.response) {
-      // request reached server and server replied with status code
-      console.log(error.response.data);
-      console.log(error.response.status);
-      console.log(error.response.headers);
-    } else if (error.request) {
-      // request made but no reply came back
-      console.log(error.request);
-    } else {
-      // something happened while setting up the request
-      console.log("Error", error.message);
-    }
-    console.log(error.config);
-  });
+// axios.get("https://api.github.com/users/alecdye")
+//   // --- Everything is working :)
+//   .then(response => {
+//     console.log(response)
+//   })
+//   // --- Something broke :(
+//   .catch(function (error) {
+//     if (error.response) {
+//       // request reached server and server replied with status code
+//       console.log(error.response.data);
+//       console.log(error.response.status);
+//       console.log(error.response.headers);
+//     } else if (error.request) {
+//       // request made but no reply came back
+//       console.log(error.request);
+//     } else {
+//       // something happened while setting up the request
+//       console.log("Error", error.message);
+//     }
+//     console.log(error.config);
+//   });
+
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
    data in order to use it to build your component function 
@@ -44,7 +46,13 @@ axios.get("https://api.github.com/users/alecdye")
           user, and adding that card to the DOM.
 */
 
-const followersArray = [];
+const followersArray = [
+  "tetondan",
+  "dustinmyers",
+  "justsml",
+  "luishrd",
+  "bigknell"
+];
 
 /* Step 3: Create a function that accepts a single object as its only argument,
           Using DOM methods and properties, create a component that will return the following DOM element:
@@ -97,6 +105,7 @@ function createCard(user) {
   name.classList.add('.name');
   userName.classList.add('.username');
 
+  // note: adding classes to html element for existing css style, not assigning css styles to html elements.
   // newImg.classList.add('.card img');
   // name.classList.add('.card .name');
   // userName.classList.add('.card .username');
@@ -121,6 +130,31 @@ function createCard(user) {
   return newCard;
 }
 
+// --- appending newly created cards to existing html DOM
+const entry = document.querySelector('.cards');
+
+// --- calling the function and passing in an array of user data
+followersArray.forEach(user => {
+  axios.get("https://api.github.com/users/" + user)
+    .then(response => {
+      entry.append(createCard(response))
+    })
+    .catch(function (error) {
+      if (error.response) {
+        // request reached server and server replied with status code
+        console.log(error.response.data);
+        console.log(error.response.status);
+        console.log(error.response.headers);
+      } else if (error.request) {
+        // request made but no reply came back
+        console.log(error.request);
+      } else {
+        // something happened while setting up the request
+        console.log("Error", error.message);
+      }
+      console.log(error.config);
+    });
+})
 /* List of LS Instructors Github username's:
   tetondan
   dustinmyers
