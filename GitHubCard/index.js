@@ -34,11 +34,6 @@ axios.get("https://api.github.com/users/alecdye")
            create a new component and add it to the DOM as a child of .cards
 */
 
-// function userCard() {
-//   const newCard = document.createElement('div'),
-//         newImage = document.createElement('img'),
-// }
-
 /* Step 5: Now that you have your own card getting added to the DOM, either 
           follow this link in your browser https://api.github.com/users/alecdye/followers 
           , manually find some other users' github handles, or use the list found 
@@ -68,8 +63,34 @@ const followersArray = [];
     <p>Bio: {users bio}</p>
   </div>
 </div>
-
 */
+// --- function to take github api and create a user card
+function createCard(user) {
+  // --- create elements
+  let newCard = document.createElement('div'),
+    cardCont = document.createElement('div'),
+    newImg = document.createElement('img'),
+    name = document.createElement('h3'),
+    userName = document.createElement('p'),
+    location = document.createElement('p'),
+    linkCont = document.createElement('p'),
+    link = document.createElement('a'),
+    countFollowers = document.createElement('p'),
+    countFollowing = document.createElement('p'),
+    bio = document.createElement('p')
+
+  // --- append elements to parents
+  newCard.append(newImg);
+  newCard.append(cardCont);
+  cardCont.append(name);
+  cardCont.append(userName);
+  cardCont.append(location);
+  cardCont.append(linkCont);
+  linkCont.append(link);
+  cardCont.append(countFollowers);
+  cardCont.append(countFollowing);
+  cardCont.append(bio);
+}
 
 /* List of LS Instructors Github username's:
   tetondan
